@@ -100,8 +100,7 @@ export default function Sidebar({initialSelectedIcon = "Home"}) {
             
             
             />
-
-            
+            <SidebarOption Icon={CgMoreO} text = "More" setSelected={setSelected} />
             <div className={style.tweetButton}>mint</div>
             <div className={style.profileButton}>
                 <div className={style.profileLeft}></div>
