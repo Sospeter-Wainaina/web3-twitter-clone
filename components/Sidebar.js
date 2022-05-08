@@ -1,5 +1,19 @@
+import { useState } from "react";
 import {FiMoreHorizontal} from "react-icons/fi";
 import {VscTwitter} from "react-icons/vsc";
+import SidebarOption from "./SidebarOption";
+import {RiHome7Line,RiHome7Fill,RiFileList2Fill} from "react-icons/ri";
+import {BiHash} from "react-icons/bi";
+import {FiBell} from "react-icons/fi"
+import {HiOutlineMail,HiMail} from "react-icons/hi";
+import {FaRegListAlt,FaHashtag,FaBell} from "react-icons/fa";
+import {CgMoreO} from "react-icons/cg";
+import {
+    BsBookmark,
+    BsBookmarkFill,
+    BsPerson,
+    BsPersonFill
+} from "react-icons/bs"
 
 const style = {
     wrapper: `flex-[0.7] px-8 flex flex-col`,
@@ -14,7 +28,8 @@ const style = {
     handle:`text-[#8899a6]`,
     morecontainer: `flex items-center mr-2`
 }
-export default function Sidebar() {
+export default function Sidebar({initialSelectedIcon = "Home"}) {
+    const [selected, setSelected] = useState('initialSelectedIcon')
     return (
     <div className={style.wrapper}>
         <div className={style.twitterIconContainer}>
@@ -22,14 +37,71 @@ export default function Sidebar() {
         </div>
         <div className={style.navContainer}>
 
-            <div>Home</div>
-            <div>Explore</div>
-            <div>Notifications</div>
-            <div>Messages</div>
-            <div>Bookmarks</div>
-            <div>Lists</div>
-            <div>Profile</div>
-            <div>More</div>
+            <SidebarOption 
+                Icon = {selected === "Home" ? RiHome7Fill : RiHome7Line}
+                text="Home"
+                isActive={Boolean(selected === "Home")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            />
+
+<SidebarOption 
+                Icon = {selected === "Explore" ? FaHashtag : BiHash}
+                text="Explore"
+                isActive={Boolean(selected === "Explore")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            
+            />
+            <SidebarOption 
+                Icon = {selected === "Notifications" ? FaBell : FiBell}
+                text="Notifications"
+                isActive={Boolean(selected === "Notifications")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            
+            />
+            <SidebarOption 
+                Icon = {selected === "Messages" ? HiMail : HiOutlineMail}
+                text="Messages"
+                isActive={Boolean(selected === "Messages")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            
+            />
+            <SidebarOption 
+                Icon = {selected === "Bookmarks" ? BsBookmarkFill : BsBookmark}
+                text="Bookmarks"
+                isActive={Boolean(selected === "Bookmarks")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            
+            />
+            <SidebarOption 
+                Icon = {selected === "Lists" ? RiFileList2Fill : FaRegListAlt}
+                text="Lists"
+                isActive={Boolean(selected === "Lists")}
+                setSelected={setSelected}
+                redirect="/"
+            
+            
+            />
+            <SidebarOption 
+                Icon = {selected === "Profile" ? BsPersonFill : BsPerson}
+                text="Profile"
+                isActive={Boolean(selected === "Profile")}
+                setSelected={setSelected}
+                redirect="/profile"
+            
+            
+            />
+
+            
             <div className={style.tweetButton}>mint</div>
             <div className={style.profileButton}>
                 <div className={style.profileLeft}></div>
